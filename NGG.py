@@ -12,7 +12,7 @@ def game():
 
     randomNum = random.randint(first, last)
     score = 0
-    guess = int(input('Pick a number between {} and {}: '.format(first, last)))
+    guess = ''
     while guess != randomNum:
         try:
             guess = int(input('Pick a number between {} and {}: '.format(first, last)))
@@ -28,8 +28,12 @@ def game():
         elif guess < randomNum:
             print('Too low! Try again.')
         else:
+            highScore = score
             print('You got it! It took you {} tries.'.format(score))
-            print('Closing game, see you next time')
-            quit()
+            print('Highscore is now {} tries.'.format(highScore))
+    if score < highScore:
+        print('=-=-=- New High Score! -=-=-=')
+        highScore = score
+
 
 game()
