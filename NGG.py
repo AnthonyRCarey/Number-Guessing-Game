@@ -17,7 +17,7 @@ def startGame():
             guess = int(input('Input your guess between 1 and 10: '))
             if guess > 10 or guess < 1:
                 score += 1
-                print('\nYour guess needs to be between 1 and 10.\n')
+                raise ValueError('Your guess needs to be between 1 and 10.')
             elif guess > answer:
                 score += 1
                 print('\nToo high! Try again.\n')
@@ -42,8 +42,9 @@ def startGame():
                     else:
                         print('\nThanks for playing!\nClosing game...')
                         quit()
-        except ValueError:
+        except ValueError as err:
             print('Something went wrong...')
+            print(err)
     # Game ends
 
 startGame()
